@@ -72,7 +72,7 @@ quote-style = "double"
 max-args = 6
 
 [tool.ruff.lint.pep8-naming]
-classmethod-decorators = ["pydantic.validator", "pydantic.root_validator"]
+classmethod-decorators = []
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -93,7 +93,7 @@ known-first-party = ["sqliter"]
 keep-runtime-typing = true
 
 [tool.mypy]
-plugins = ["pydantic.mypy"]
+plugins = []
 
 python_version = "3.9"
 exclude = ["docs"]

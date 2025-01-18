@@ -259,7 +259,10 @@ class HTTP_200_OK(HTTPStatus):
 
     _error_code = 200
     _message = "OK"
-    _description = ""
+    _description = (
+        "The request has succeeded and the response contains the "
+        "requested data."
+    )
 
 
 class HTTP_201_CREATED(HTTPStatus):
@@ -272,7 +275,9 @@ class HTTP_201_CREATED(HTTPStatus):
 
     _error_code = 201
     _message = "Created"
-    _description = ""
+    _description = (
+        "The request has succeeded and a new resource has been created."
+    )
 
 
 class HTTP_202_ACCEPTED(HTTPStatus):
@@ -285,7 +290,10 @@ class HTTP_202_ACCEPTED(HTTPStatus):
 
     _error_code = 202
     _message = "Accepted"
-    _description = ""
+    _description = (
+        "The request has been accepted for processing but has not "
+        "been completed."
+    )
 
 
 class HTTP_203_NON_AUTHORITATIVE_INFORMATION(HTTPStatus):
@@ -298,7 +306,10 @@ class HTTP_203_NON_AUTHORITATIVE_INFORMATION(HTTPStatus):
 
     _error_code = 203
     _message = "Non-Authoritative Information"
-    _description = ""
+    _description = (
+        "The response has been transformed by a proxy from the "
+        "origin server's response."
+    )
 
 
 class HTTP_204_NO_CONTENT(HTTPStatus):
@@ -310,7 +321,9 @@ class HTTP_204_NO_CONTENT(HTTPStatus):
 
     _error_code = 204
     _message = "No Content"
-    _description = ""
+    _description = (
+        "The request succeeded but there is no content to send in the response."
+    )
 
 
 class HTTP_205_RESET_CONTENT(HTTPStatus):
@@ -322,7 +335,9 @@ class HTTP_205_RESET_CONTENT(HTTPStatus):
 
     _error_code = 205
     _message = "Reset Content"
-    _description = ""
+    _description = (
+        "The client should reset the document view that caused this request."
+    )
 
 
 class HTTP_206_PARTIAL_CONTENT(HTTPStatus):
@@ -335,7 +350,10 @@ class HTTP_206_PARTIAL_CONTENT(HTTPStatus):
 
     _error_code = 206
     _message = "Partial Content"
-    _description = ""
+    _description = (
+        "The server is delivering only part of the resource due "
+        "to a range header sent by the client."
+    )
 
 
 class HTTP_207_MULTI_STATUS(HTTPStatus):
@@ -347,7 +365,9 @@ class HTTP_207_MULTI_STATUS(HTTPStatus):
 
     _error_code = 207
     _message = "Multi-Status"
-    _description = ""
+    _description = (
+        "Multiple status codes might be appropriate for the response."
+    )
 
 
 class HTTP_208_ALREADY_REPORTED(HTTPStatus):
@@ -359,7 +379,10 @@ class HTTP_208_ALREADY_REPORTED(HTTPStatus):
 
     _error_code = 208
     _message = "Already Reported"
-    _description = ""
+    _description = (
+        "The members of a DAV binding have already been enumerated "
+        "in a preceding part of the response."
+    )
 
 
 class HTTP_226_IM_USED(HTTPStatus):
@@ -372,7 +395,10 @@ class HTTP_226_IM_USED(HTTPStatus):
 
     _error_code = 226
     _message = "IM Used"
-    _description = ""
+    _description = (
+        "The server has fulfilled a GET request for the "
+        "resource using an instance manipulation."
+    )
 
 
 # 3xx Redirection
@@ -387,7 +413,9 @@ class HTTP_300_MULTIPLE_CHOICES(HTTPStatus):
 
     _error_code = 300
     _message = "Multiple Choices"
-    _description = ""
+    _description = (
+        "The requested resource has multiple representations available."
+    )
 
 
 class HTTP_301_MOVED_PERMANENTLY(HTTPStatus):
@@ -400,7 +428,9 @@ class HTTP_301_MOVED_PERMANENTLY(HTTPStatus):
 
     _error_code = 301
     _message = "Moved Permanently"
-    _description = ""
+    _description = (
+        "The requested resource has been permanently moved to a new URL."
+    )
 
 
 class HTTP_302_FOUND(HTTPStatus):
@@ -413,7 +443,9 @@ class HTTP_302_FOUND(HTTPStatus):
 
     _error_code = 302
     _message = "Found"
-    _description = ""
+    _description = (
+        "The requested resource temporarily resides under a different URL."
+    )
 
 
 class HTTP_303_SEE_OTHER(HTTPStatus):
@@ -426,7 +458,9 @@ class HTTP_303_SEE_OTHER(HTTPStatus):
 
     _error_code = 303
     _message = "See Other"
-    _description = ""
+    _description = (
+        "The response to the request can be found under a different URL."
+    )
 
 
 class HTTP_304_NOT_MODIFIED(HTTPStatus):
@@ -439,7 +473,7 @@ class HTTP_304_NOT_MODIFIED(HTTPStatus):
 
     _error_code = 304
     _message = "Not Modified"
-    _description = ""
+    _description = "The resource has not been modified since the last request."
 
 
 class HTTP_305_USE_PROXY(HTTPStatus):
@@ -451,7 +485,9 @@ class HTTP_305_USE_PROXY(HTTPStatus):
 
     _error_code = 305
     _message = "Use Proxy"
-    _description = ""
+    _description = (
+        "The requested resource must be accessed through the specified proxy."
+    )
 
 
 class HTTP_307_TEMPORARY_REDIRECT(HTTPStatus):
@@ -464,7 +500,9 @@ class HTTP_307_TEMPORARY_REDIRECT(HTTPStatus):
 
     _error_code = 307
     _message = "Temporary Redirect"
-    _description = ""
+    _description = (
+        "The requested resource temporarily resides under a different URL."
+    )
 
 
 class HTTP_308_PERMANENT_REDIRECT(HTTPStatus):
@@ -477,7 +515,9 @@ class HTTP_308_PERMANENT_REDIRECT(HTTPStatus):
 
     _error_code = 308
     _message = "Permanent Redirect"
-    _description = ""
+    _description = (
+        "The requested resource has been permanently moved to another URL."
+    )
 
 
 # 4xx Client Errors
@@ -491,7 +531,9 @@ class HTTP_400_BAD_REQUEST(HTTPStatus):
 
     _error_code = 400
     _message = "Bad Request"
-    _description = ""
+    _description = (
+        "The server cannot process the request due to a client error."
+    )
 
 
 class HTTP_401_UNAUTHORIZED(HTTPStatus):
@@ -503,7 +545,7 @@ class HTTP_401_UNAUTHORIZED(HTTPStatus):
 
     _error_code = 401
     _message = "Unauthorized"
-    _description = ""
+    _description = "The request requires user authentication."
 
 
 class HTTP_402_PAYMENT_REQUIRED(HTTPStatus):
@@ -515,7 +557,7 @@ class HTTP_402_PAYMENT_REQUIRED(HTTPStatus):
 
     _error_code = 402
     _message = "Payment Required"
-    _description = ""
+    _description = "Reserved for future use in digital payment systems."
 
 
 class HTTP_403_FORBIDDEN(HTTPStatus):
@@ -527,7 +569,9 @@ class HTTP_403_FORBIDDEN(HTTPStatus):
 
     _error_code = 403
     _message = "Forbidden"
-    _description = ""
+    _description = (
+        "The server understood the request but refuses to authorize it."
+    )
 
 
 class HTTP_404_NOT_FOUND(HTTPStatus):
@@ -539,7 +583,7 @@ class HTTP_404_NOT_FOUND(HTTPStatus):
 
     _error_code = 404
     _message = "Not Found"
-    _description = ""
+    _description = "The requested resource could not be found on the server."
 
 
 class HTTP_405_METHOD_NOT_ALLOWED(HTTPStatus):
@@ -551,7 +595,9 @@ class HTTP_405_METHOD_NOT_ALLOWED(HTTPStatus):
 
     _error_code = 405
     _message = "Method Not Allowed"
-    _description = ""
+    _description = (
+        "The request method is not supported for the requested resource."
+    )
 
 
 class HTTP_406_NOT_ACCEPTABLE(HTTPStatus):
@@ -564,7 +610,10 @@ class HTTP_406_NOT_ACCEPTABLE(HTTPStatus):
 
     _error_code = 406
     _message = "Not Acceptable"
-    _description = ""
+    _description = (
+        "The requested resource cannot generate content acceptable "
+        "to the client."
+    )
 
 
 class HTTP_407_PROXY_AUTHENTICATION_REQUIRED(HTTPStatus):
@@ -576,7 +625,7 @@ class HTTP_407_PROXY_AUTHENTICATION_REQUIRED(HTTPStatus):
 
     _error_code = 407
     _message = "Proxy Authentication Required"
-    _description = ""
+    _description = "Authentication with the proxy server is required."
 
 
 class HTTP_408_REQUEST_TIMEOUT(HTTPStatus):
@@ -588,7 +637,7 @@ class HTTP_408_REQUEST_TIMEOUT(HTTPStatus):
 
     _error_code = 408
     _message = "Request Timeout"
-    _description = ""
+    _description = "The server timed out waiting for the request."
 
 
 class HTTP_409_CONFLICT(HTTPStatus):
@@ -600,7 +649,7 @@ class HTTP_409_CONFLICT(HTTPStatus):
 
     _error_code = 409
     _message = "Conflict"
-    _description = ""
+    _description = "The request conflicts with the current state of the server."
 
 
 class HTTP_410_GONE(HTTPStatus):
@@ -612,7 +661,10 @@ class HTTP_410_GONE(HTTPStatus):
 
     _error_code = 410
     _message = "Gone"
-    _description = ""
+    _description = (
+        "The requested resource is no longer available and will "
+        "not be available again."
+    )
 
 
 class HTTP_411_LENGTH_REQUIRED(HTTPStatus):
@@ -624,7 +676,7 @@ class HTTP_411_LENGTH_REQUIRED(HTTPStatus):
 
     _error_code = 411
     _message = "Length Required"
-    _description = ""
+    _description = "The request did not specify the length of its content."
 
 
 class HTTP_412_PRECONDITION_FAILED(HTTPStatus):
@@ -636,7 +688,10 @@ class HTTP_412_PRECONDITION_FAILED(HTTPStatus):
 
     _error_code = 412
     _message = "Precondition Failed"
-    _description = ""
+    _description = (
+        "Server does not meet one of the preconditions specified "
+        "in the request headers."
+    )
 
 
 class HTTP_413_PAYLOAD_TOO_LARGE(HTTPStatus):
@@ -648,7 +703,10 @@ class HTTP_413_PAYLOAD_TOO_LARGE(HTTPStatus):
 
     _error_code = 413
     _message = "Payload Too Large"
-    _description = ""
+    _description = (
+        "The request payload is larger than the server is willing "
+        "or able to process."
+    )
 
 
 class HTTP_414_URI_TOO_LONG(HTTPStatus):
@@ -660,7 +718,9 @@ class HTTP_414_URI_TOO_LONG(HTTPStatus):
 
     _error_code = 414
     _message = "URI Too Long"
-    _description = ""
+    _description = (
+        "The URI requested by the client is longer than the server can process."
+    )
 
 
 class HTTP_415_UNSUPPORTED_MEDIA_TYPE(HTTPStatus):
@@ -672,7 +732,9 @@ class HTTP_415_UNSUPPORTED_MEDIA_TYPE(HTTPStatus):
 
     _error_code = 415
     _message = "Unsupported Media Type"
-    _description = ""
+    _description = (
+        "The server does not support the media type transmitted in the request."
+    )
 
 
 class HTTP_416_RANGE_NOT_SATISFIABLE(HTTPStatus):
@@ -684,7 +746,10 @@ class HTTP_416_RANGE_NOT_SATISFIABLE(HTTPStatus):
 
     _error_code = 416
     _message = "Range Not Satisfiable"
-    _description = ""
+    _description = (
+        "The client has asked for a portion of the file that "
+        "lies beyond its end."
+    )
 
 
 class HTTP_417_EXPECTATION_FAILED(HTTPStatus):
@@ -696,7 +761,10 @@ class HTTP_417_EXPECTATION_FAILED(HTTPStatus):
 
     _error_code = 417
     _message = "Expectation Failed"
-    _description = ""
+    _description = (
+        "The server cannot meet the requirements of the Expect "
+        "request-header field."
+    )
 
 
 class HTTP_418_IM_A_TEAPOT(HTTPStatus):
@@ -708,7 +776,7 @@ class HTTP_418_IM_A_TEAPOT(HTTPStatus):
 
     _error_code = 418
     _message = "I'm a teapot"
-    _description = ""
+    _description = "The server refuses to brew coffee because it is a teapot."
 
 
 class HTTP_421_MISDIRECTED_REQUEST(HTTPStatus):
@@ -720,7 +788,9 @@ class HTTP_421_MISDIRECTED_REQUEST(HTTPStatus):
 
     _error_code = 421
     _message = "Misdirected Request"
-    _description = ""
+    _description = (
+        "The request was directed at a server that cannot produce a response."
+    )
 
 
 class HTTP_422_UNPROCESSABLE_ENTITY(HTTPStatus):
@@ -733,7 +803,10 @@ class HTTP_422_UNPROCESSABLE_ENTITY(HTTPStatus):
 
     _error_code = 422
     _message = "Unprocessable Entity"
-    _description = ""
+    _description = (
+        "The request was well-formed but has semantic errors that "
+        "prevent processing."
+    )
 
 
 class HTTP_423_LOCKED(HTTPStatus):
@@ -745,7 +818,7 @@ class HTTP_423_LOCKED(HTTPStatus):
 
     _error_code = 423
     _message = "Locked"
-    _description = ""
+    _description = "The requested resource is locked and cannot be accessed."
 
 
 class HTTP_424_FAILED_DEPENDENCY(HTTPStatus):
@@ -757,7 +830,7 @@ class HTTP_424_FAILED_DEPENDENCY(HTTPStatus):
 
     _error_code = 424
     _message = "Failed Dependency"
-    _description = ""
+    _description = "The request failed due to failure of a previous request."
 
 
 class HTTP_425_TOO_EARLY(HTTPStatus):
@@ -769,7 +842,10 @@ class HTTP_425_TOO_EARLY(HTTPStatus):
 
     _error_code = 425
     _message = "Too Early"
-    _description = ""
+    _description = (
+        "The server is unwilling to risk processing a request "
+        "that might be replayed."
+    )
 
 
 class HTTP_426_UPGRADE_REQUIRED(HTTPStatus):
@@ -782,7 +858,10 @@ class HTTP_426_UPGRADE_REQUIRED(HTTPStatus):
 
     _error_code = 426
     _message = "Upgrade Required"
-    _description = ""
+    _description = (
+        "The client should switch to a different protocol "
+        "specified in the Upgrade header."
+    )
 
 
 class HTTP_428_PRECONDITION_REQUIRED(HTTPStatus):
@@ -794,7 +873,7 @@ class HTTP_428_PRECONDITION_REQUIRED(HTTPStatus):
 
     _error_code = 428
     _message = "Precondition Required"
-    _description = ""
+    _description = "The origin server requires the request to be conditional."
 
 
 class HTTP_429_TOO_MANY_REQUESTS(HTTPStatus):
@@ -806,7 +885,9 @@ class HTTP_429_TOO_MANY_REQUESTS(HTTPStatus):
 
     _error_code = 429
     _message = "Too Many Requests"
-    _description = ""
+    _description = (
+        "The user has sent too many requests in a given amount of time."
+    )
 
 
 class HTTP_431_REQUEST_HEADER_FIELDS_TOO_LARGE(HTTPStatus):
@@ -818,7 +899,10 @@ class HTTP_431_REQUEST_HEADER_FIELDS_TOO_LARGE(HTTPStatus):
 
     _error_code = 431
     _message = "Request Header Fields Too Large"
-    _description = ""
+    _description = (
+        "The server is unwilling to process the request because "
+        "its header fields are too large."
+    )
 
 
 class HTTP_451_UNAVAILABLE_FOR_LEGAL_REASONS(HTTPStatus):
@@ -830,7 +914,7 @@ class HTTP_451_UNAVAILABLE_FOR_LEGAL_REASONS(HTTPStatus):
 
     _error_code = 451
     _message = "Unavailable For Legal Reasons"
-    _description = ""
+    _description = "The server is denying access due to legal reasons."
 
 
 # 5xx Server Errors
@@ -843,6 +927,10 @@ class HTTP_500_INTERNAL_SERVER_ERROR(HTTPStatus):
 
     _error_code = 500
     _message = "Internal Server Error"
+    _description = (
+        "The server encountered an unexpected condition that "
+        "prevented fulfilling the request."
+    )
 
 
 class HTTP_501_NOT_IMPLEMENTED(HTTPStatus):
@@ -854,6 +942,10 @@ class HTTP_501_NOT_IMPLEMENTED(HTTPStatus):
 
     _error_code = 501
     _message = "Not Implemented"
+    _description = (
+        "The server does not support the functionality required "
+        "to fulfill the request."
+    )
 
 
 class HTTP_502_BAD_GATEWAY(HTTPStatus):
@@ -866,6 +958,9 @@ class HTTP_502_BAD_GATEWAY(HTTPStatus):
 
     _error_code = 502
     _message = "Bad Gateway"
+    _description = (
+        "The server received an invalid response from the upstream server."
+    )
 
 
 class HTTP_503_SERVICE_UNAVAILABLE(HTTPStatus):
@@ -877,6 +972,7 @@ class HTTP_503_SERVICE_UNAVAILABLE(HTTPStatus):
 
     _error_code = 503
     _message = "Service Unavailable"
+    _description = "The server is temporarily unable to handle the request."
 
 
 class HTTP_504_GATEWAY_TIMEOUT(HTTPStatus):
@@ -889,6 +985,10 @@ class HTTP_504_GATEWAY_TIMEOUT(HTTPStatus):
 
     _error_code = 504
     _message = "Gateway Timeout"
+    _description = (
+        "The gateway server did not receive a timely response "
+        "from the upstream server."
+    )
 
 
 class HTTP_505_HTTP_VERSION_NOT_SUPPORTED(HTTPStatus):
@@ -900,6 +1000,10 @@ class HTTP_505_HTTP_VERSION_NOT_SUPPORTED(HTTPStatus):
 
     _error_code = 505
     _message = "HTTP Version Not Supported"
+    _description = (
+        "The server does not support the HTTP protocol version "
+        "used in the request."
+    )
 
 
 class HTTP_506_VARIANT_ALSO_NEGOTIATES(HTTPStatus):
@@ -912,6 +1016,9 @@ class HTTP_506_VARIANT_ALSO_NEGOTIATES(HTTPStatus):
 
     _error_code = 506
     _message = "Variant Also Negotiates"
+    _description = (
+        "The server has a configuration error in content negotiation."
+    )
 
 
 class HTTP_507_INSUFFICIENT_STORAGE(HTTPStatus):
@@ -923,6 +1030,10 @@ class HTTP_507_INSUFFICIENT_STORAGE(HTTPStatus):
 
     _error_code = 507
     _message = "Insufficient Storage"
+    _description = (
+        "The server is unable to store the representation needed "
+        "to complete the request."
+    )
 
 
 class HTTP_508_LOOP_DETECTED(HTTPStatus):
@@ -934,6 +1045,9 @@ class HTTP_508_LOOP_DETECTED(HTTPStatus):
 
     _error_code = 508
     _message = "Loop Detected"
+    _description = (
+        "The server detected an infinite loop while processing the request."
+    )
 
 
 class HTTP_510_NOT_EXTENDED(HTTPStatus):
@@ -945,6 +1059,10 @@ class HTTP_510_NOT_EXTENDED(HTTPStatus):
 
     _error_code = 510
     _message = "Not Extended"
+    _description = (
+        "Further extensions to the request are required for the "
+        "server to fulfill it."
+    )
 
 
 class HTTP_511_NETWORK_AUTHENTICATION_REQUIRED(HTTPStatus):
@@ -956,6 +1074,7 @@ class HTTP_511_NETWORK_AUTHENTICATION_REQUIRED(HTTPStatus):
 
     _error_code = 511
     _message = "Network Authentication Required"
+    _description = "The client needs to authenticate to gain network access."
 
 
 # Define relevant error groups
