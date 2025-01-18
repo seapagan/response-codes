@@ -119,12 +119,10 @@ addopts = [
     "--cov-report",
     "lcov",
 ]
-filterwarnings = [
-    "ignore:'direction' argument is deprecated:DeprecationWarning",
-]
+filterwarnings = []
 mock_use_standalone_module = true
 markers = []
 
 [tool.coverage.run]
-source = ["sqliter"]
+source = ["http_status"]
 omit = ["*/tests/*"]

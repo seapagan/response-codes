@@ -169,7 +169,10 @@ def create_status_group(
     *status_classes: type[HTTPStatus],
 ) -> dict[int, type[HTTPStatus]]:
     """Create a custom status group as a dictionary."""
-    return {int(status_class): status_class for status_class in status_classes}
+    return {
+        status_class.status_code: status_class
+        for status_class in status_classes
+    }
 
 
 # 1xx Informational Responses
