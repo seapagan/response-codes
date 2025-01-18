@@ -198,13 +198,10 @@ class HTTPStatus(Exception):
 
 # Utility function to create custom groups
 def create_error_group(
-    *status_classes: list[HTTPStatus],
-) -> dict[int, HTTPStatus]:
+    *status_classes: type[HTTPStatus],
+) -> dict[int, type[HTTPStatus]]:
     """Create a custom status group as a dictionary."""
-    return {
-        status_class.status_code: status_class
-        for status_class in status_classes
-    }
+    return {int(status_class): status_class for status_class in status_classes}
 
 
 # 1xx Informational Responses
