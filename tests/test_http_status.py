@@ -133,6 +133,15 @@ class TestHTTPStatusExceptions:
         assert isinstance(status, Exception)
 
 
+class TestImplicitConversions:
+    """Ensure that implicit conversions work as expected."""
+
+    def test_implicit_conversion(self) -> None:
+        """Test for implicit conversions."""
+        assert HTTP_200_OK == 200
+        assert HTTP_200_OK == "OK"
+
+
 class TestSpecificStatusCodes:
     """Test specific HTTP status codes."""
 
