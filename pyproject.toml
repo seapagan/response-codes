@@ -1,6 +1,6 @@
 [project]
-name = "response-codes"
-version = "0.1.0"
+name = "http-response-codes"
+version = "0.1.1"
 description = "A comprehensive Python library providing HTTP status code constants and exceptions"
 authors = [{ name = "Grant Ramsay", email = "seapagan@gmail.com" }]
 requires-python = ">=3.7"
@@ -38,6 +38,9 @@ build-backend = "hatchling.build"
 [tool.hatch.build]
 exclude = [".vscode/"]
 
+[tool.hatch.build.targets.wheel]
+include = ["response_codes"]
+
 [tool.uv]
 dev-dependencies = [
     "mock>=5.1.0",
@@ -48,6 +51,7 @@ dev-dependencies = [
     "pytest-cov>=4.1.0",
     "pytest-mock>=3.11.1",
     "pytest-sugar>=1.0.0",
+    "pytest-watcher>=0.4.3",
     "ruff>=0.9.2",
 ]
 
@@ -88,7 +92,6 @@ classmethod-decorators = []
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
-
 
 [tool.ruff.lint.isort]
 known-first-party = ["response_codes"]
@@ -140,6 +143,7 @@ addopts = [
     "--cov-report",
     "lcov",
 ]
+pythonpath = ["src"]
 filterwarnings = []
 mock_use_standalone_module = true
 markers = []

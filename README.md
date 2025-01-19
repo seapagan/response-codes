@@ -1,19 +1,22 @@
-# Response Codes
+# HTTP Response Codes
 
 A comprehensive Python library providing HTTP status code constants and exceptions.
 
-[![PyPI version](https://badge.fury.io/py/response-codes.svg)](https://badge.fury.io/py/response-codes)
-[![Python Support](https://img.shields.io/pypi/pyversions/response-codes.svg)](https://pypi.org/project/response-codes/)
+[![PyPI version](https://badge.fury.io/py/http-response-codes.svg)](https://badge.fury.io/py/http-response-codes)
+[![Python Support](https://img.shields.io/pypi/pyversions/http-response-codes.svg)](https://pypi.org/project/http-response-codes/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 NOTE: This library is still in development and has little actual usage or real
 use-cases so far. Indeed, the module api may change considerably - i'll have it
-locked down in the next few days. Uploading to pypi now just to reserve the name
+locked down in the next few days. Uploading to PyPI now just to reserve the name
 and possibly get some early adopters/feedback
 
 ## Overview
 
-`response-codes` is a Python library that provides a comprehensive set of HTTP status codes as exception classes. Each status code is represented by a class that inherits from `HTTPStatus`, containing the numeric code, message, and description.
+`http-response-codes` is a Python library that provides a comprehensive set of
+HTTP status codes as exception classes. Each status code is represented by a
+class that inherits from `HTTPStatus`, containing the numeric code, message, and
+description.
 
 The module covers all standard HTTP status codes in the following categories:
 
@@ -26,13 +29,13 @@ The module covers all standard HTTP status codes in the following categories:
 ## Installation
 
 ```bash
-pip install response-codes
+pip install http-response-codes
 ```
 
 Or using `uv`:
 
 ```bash
-uv add response-codes
+uv add http-response-codes
 ```
 
 ## Features
@@ -93,20 +96,20 @@ This project uses modern Python tooling:
 
 ### Setup Development Environment
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/seapagan/response-codes.git
 cd response-codes
 ```
 
-2. Install development dependencies:
+Install development dependencies:
 
 ```bash
 uv sync
 ```
 
-3. Install pre-commit hooks:
+Install pre-commit hooks:
 
 ```bash
 pre-commit install
