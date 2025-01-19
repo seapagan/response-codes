@@ -22,44 +22,20 @@ create_error_group() utility function:
     - HTTP_REDIRECTION: 3xx status codes
     - HTTP_CLIENT_ERRORS: Common 4xx status codes
     - HTTP_SERVER_ERRORS: Common 5xx status codes
-
-Example:
-    >>> from http_status import HTTP_404_NOT_FOUND
-    >>> raise HTTP_404_NOT_FOUND()
-    [404] Not Found
-    >>> HTTP_404_NOT_FOUND.status_code
-    404
-    >>> HTTP_404_NOT_FOUND == 404
-    True
-
-Attributes:
-    HTTP_INFORMATIONAL (dict): Group of 1xx informational status codes
-    HTTP_SUCCESS (dict): Group of 2xx success status codes HTTP_REDIRECTION
-    (dict): Group of 3xx redirection status codes HTTP_CLIENT_ERRORS (dict):
-    Group of common 4xx client error status codes HTTP_SERVER_ERRORS (dict):
-    Group of common 5xx server error status codes
 """
 
 from __future__ import annotations
 
 
 class HTTPStatusMeta(type):
-    """Base class for HTTP status code exceptions.
+    """Base meta-class for HTTP status code exceptions.
 
-    This class serves as the foundation for all HTTP status code exceptions,
-    providing common functionality for status code handling and comparison.
+    This class serves as the meta-class for the base HTTPStatus class.
 
     Attributes:
         status_code (int): The numeric HTTP status code
         message (str): The standard HTTP status message
         description (str): A detailed description of the status code
-
-    Examples:
-        >>> status = HTTP_404_NOT_FOUND()
-        >>> status.status_code
-        404
-        >>> status.message
-        'Not Found'
     """
 
     def __init__(

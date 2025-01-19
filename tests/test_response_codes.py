@@ -1,9 +1,10 @@
-"""Tests for the http_status module."""
+"""Tests for the http_codes module."""
 
 from __future__ import annotations
 
 import pytest
-from http_status import (
+
+from response_codes import (
     HTTP_200_OK,
     HTTP_404_NOT_FOUND,
     HTTP_500_INTERNAL_SERVER_ERROR,
