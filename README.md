@@ -6,6 +6,11 @@ A comprehensive Python library providing HTTP status code constants and exceptio
 [![Python Support](https://img.shields.io/pypi/pyversions/response-codes.svg)](https://pypi.org/project/response-codes/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+NOTE: This library is still in development and has little actual usage or real
+use-cases so far. Indeed, the module api may change considerably - i'll have it
+locked down in the next few days. Uploading to pypi now just to reserve the name
+and possibly get some early adopters/feedback
+
 ## Overview
 
 `response-codes` is a Python library that provides a comprehensive set of HTTP status codes as exception classes. Each status code is represented by a class that inherits from `HTTPStatus`, containing the numeric code, message, and description.
