@@ -1,6 +1,6 @@
 [project]
 name = "http-response-codes"
-version = "0.1.1"
+version = "0.2.0"
 description = "A comprehensive Python library providing HTTP status code constants and exceptions"
 authors = [{ name = "Grant Ramsay", email = "seapagan@gmail.com" }]
 requires-python = ">=3.7"
@@ -36,10 +36,10 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
-exclude = [".vscode/"]
+exclude = [".vscode/", ".github/"]
 
 [tool.hatch.build.targets.wheel]
-include = ["response_codes"]
+packages = ["src/response_codes"]
 
 [tool.uv]
 dev-dependencies = [
