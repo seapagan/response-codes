@@ -9,7 +9,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 **New Features**
 
-- Add a `\_\_hash\_\_` method to base class and update assorted deps ([#5](https://github.com/seapagan/response-codes/pull/5)) by [seapagan](https://github.com/seapagan)
+- Add a `__hash__` method to the base class and update assorted deps ([#5](https://github.com/seapagan/response-codes/pull/5)) by [seapagan](https://github.com/seapagan)
+
+**Dependency Updates**
+
+- Update astral-sh/setup-uv action to v6 ([#3](https://github.com/seapagan/response-codes/pull/3)) by [renovate[bot]](https://github.com/apps/renovate)
+- Update actions/checkout action to v5 - autoclosed ([#2](https://github.com/seapagan/response-codes/pull/2)) by [renovate[bot]](https://github.com/apps/renovate)
 
 [`Full Changelog`](https://github.com/seapagan/response-codes/compare/0.2.0...0.3.0) | [`Diff`](https://github.com/seapagan/response-codes/compare/0.2.0...0.3.0.diff) | [`Patch`](https://github.com/seapagan/response-codes/compare/0.2.0...0.3.0.patch)
 
