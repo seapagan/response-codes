@@ -137,6 +137,14 @@ class HTTPStatusMeta(type):
             return cls.status_code >= other
         return NotImplemented
 
+    def __hash__(cls) -> int:
+        """Return hash based on the status code.
+
+        Returns:
+            int: Hash value based on the status code
+        """
+        return hash(cls.status_code)
+
 
 class HTTPStatus(Exception, metaclass=HTTPStatusMeta):
     """Base class for HTTP status code exceptions.
