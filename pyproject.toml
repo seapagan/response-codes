@@ -32,14 +32,11 @@ Documentation = "https://github.com/seapagan/response-codes#readme"
 "Bug Tracker" = "https://github.com/seapagan/response-codes/issues"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.8.13,<0.9.0"]
+build-backend = "uv_build"
 
-[tool.hatch.build]
-exclude = [".vscode/", ".github/"]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/response_codes"]
+[tool.uv.build-backend]
+module-name = "response_codes"
 
 [tool.uv]
 dev-dependencies = [
