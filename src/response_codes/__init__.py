@@ -5,10 +5,12 @@ classes, allowing for both error handling and status code validation. Each
 status code is represented by a class inheriting from HTTPStatus, containing the
 numeric code, message, and description.
 
-The module provides status codes in the following categories: - 1xx:
-Informational responses (100-102) - 2xx: Success responses (200-208, 226) - 3xx:
-Redirection responses (300-308) - 4xx: Client error responses (400-431, 451) -
-5xx: Server error responses (500-511)
+The module provides status codes in the following categories:
+    - 1xx: Informational responses (100-102)
+    - 2xx: Success responses (200-208, 226)
+    - 3xx: Redirection responses (300-308)
+    - 4xx: Client error responses (400-431, 451)
+    - 5xx: Server error responses (500-511)
 
 Each status code class provides:
     - status_code: The numeric HTTP status code
@@ -178,7 +180,16 @@ class HTTPStatus(Exception, metaclass=HTTPStatusMeta):
 def create_status_group(
     *status_classes: type[HTTPStatus],
 ) -> dict[int, type[HTTPStatus]]:
-    """Create a custom status group as a dictionary."""
+    """Create a custom status group as a dictionary.
+
+    Args:
+        *status_classes: Variable number of HTTPStatus subclasses to include
+            in the group.
+
+    Returns:
+        A dictionary mapping status codes (int) to their corresponding
+        HTTPStatus subclasses.
+    """
     return {
         status_class.status_code: status_class
         for status_class in status_classes
@@ -250,8 +261,7 @@ class HTTP_201_CREATED(HTTPStatus):
     """201 Created response status code.
 
     Indicates that the request has been fulfilled and has resulted in one or
-    more
-    new resources being created.
+    more new resources being created.
     """
 
     status_code = 201

@@ -42,9 +42,13 @@ uv add http-response-codes
 
 - Complete coverage of HTTP status codes
 - Each status code is a proper Python exception class
+- **Class-level comparisons** without instantiation required
+- Rich comparison operators (`==`, `<`, `<=`, `>`, `>=`)
+- Compare with both integers and strings
+- Type conversion support (`int()`, `str()`)
+- Hashable - use as dictionary keys or in sets
 - Type hints included
 - Predefined groups of related status codes
-- Intuitive comparison operations
 - Detailed descriptions for each status code
 - Zero dependencies
 
@@ -58,14 +62,19 @@ from response_codes import HTTP_404_NOT_FOUND
 # Raise as an exception
 raise HTTP_404_NOT_FOUND()
 
-# Access status code properties
+# Access status code properties (no instantiation needed!)
 print(HTTP_404_NOT_FOUND.status_code)  # 404
 print(HTTP_404_NOT_FOUND.message)      # "Not Found"
 print(HTTP_404_NOT_FOUND.description)  # Detailed description
 
-# Compare with integers
+# Compare directly with integers (class-level magic!)
 assert HTTP_404_NOT_FOUND == 404
+assert HTTP_404_NOT_FOUND == "Not Found"
 ```
+
+> [!NOTE]
+> Thanks to metaclass magic, you can compare status codes and access their
+> properties directly on the class - no need to instantiate!
 
 ### Using Status Code Groups
 
@@ -82,6 +91,152 @@ from response_codes import (
 status_code = 404
 if status_code in HTTP_CLIENT_ERRORS:
     print("This is a client error!")
+```
+
+### Advanced Comparison Features
+
+The library uses a metaclass to enable powerful comparison operations
+directly on the status code classes (no instantiation required):
+
+#### Compare with Integers or Strings
+
+```python
+from response_codes import HTTP_404_NOT_FOUND, HTTP_200_OK
+
+# Integer comparison
+if HTTP_404_NOT_FOUND == 404:
+    print("It's a 404!")
+
+# String comparison
+if HTTP_200_OK == "OK":
+    print("Request succeeded")
+
+# Rich comparisons for range checking
+if 400 <= HTTP_404_NOT_FOUND < 500:
+    print("Client error")
+
+if HTTP_500_INTERNAL_SERVER_ERROR >= 500:
+    print("Server error")
+```
+
+#### Type Conversions
+
+```python
+from response_codes import HTTP_404_NOT_FOUND
+
+# Convert to integer
+status_code = int(HTTP_404_NOT_FOUND)  # 404
+
+# Convert to string
+status_msg = str(HTTP_404_NOT_FOUND)   # "Not Found"
+```
+
+#### Use in Collections
+
+Status codes are hashable and can be used as dictionary keys or in sets:
+
+```python
+from response_codes import (
+    HTTP_200_OK,
+    HTTP_404_NOT_FOUND,
+    HTTP_500_INTERNAL_SERVER_ERROR,
+)
+
+# As dictionary keys
+handlers = {
+    HTTP_200_OK: handle_success,
+    HTTP_404_NOT_FOUND: handle_not_found,
+    HTTP_500_INTERNAL_SERVER_ERROR: handle_error,
+}
+
+# In sets
+critical_errors = {
+    HTTP_500_INTERNAL_SERVER_ERROR,
+    HTTP_503_SERVICE_UNAVAILABLE,
+}
+```
+
+### Real-World Examples
+
+#### Flask/FastAPI Response Handling
+
+```python
+from flask import jsonify
+from response_codes import (
+    HTTP_200_OK,
+    HTTP_404_NOT_FOUND,
+    HTTP_400_BAD_REQUEST,
+)
+
+@app.route('/api/user/<int:user_id>')
+def get_user(user_id):
+    user = db.get_user(user_id)
+
+    if not user:
+        return (
+            jsonify({"error": str(HTTP_404_NOT_FOUND)}),
+            int(HTTP_404_NOT_FOUND)
+        )
+
+    return jsonify(user), int(HTTP_200_OK)
+```
+
+#### Exception Handling with Detailed Information
+
+```python
+from response_codes import HTTP_404_NOT_FOUND, HTTPStatus
+
+try:
+    resource = fetch_resource(resource_id)
+    if not resource:
+        raise HTTP_404_NOT_FOUND()
+except HTTP_404_NOT_FOUND as e:
+    logger.error(f"{e.status_code} - {e.message}: {e.description}")
+    return {"error": e.message}, e.status_code
+except HTTPStatus as e:
+    # Catch any HTTP status exception
+    logger.error(f"HTTP Error {e.status_code}: {e.message}")
+    return {"error": e.message}, e.status_code
+```
+
+#### Status Code Validation and Range Checking
+
+```python
+from response_codes import HTTP_CLIENT_ERRORS
+
+def handle_api_response(status_code):
+    # Check if status code is in client error range
+    if status_code in HTTP_CLIENT_ERRORS:
+        retry_request()
+
+    # Check status code ranges using comparisons
+    if 200 <= status_code < 300:
+        return "Success"
+    elif 300 <= status_code < 400:
+        return "Redirection"
+    elif 400 <= status_code < 500:
+        return "Client Error"
+    elif 500 <= status_code < 600:
+        return "Server Error"
+```
+
+#### Custom Error Groups
+
+```python
+from response_codes import (
+    create_status_group,
+    HTTP_401_UNAUTHORIZED,
+    HTTP_403_FORBIDDEN,
+)
+
+# Create custom groups for your application
+AUTH_ERRORS = create_status_group(
+    HTTP_401_UNAUTHORIZED,
+    HTTP_403_FORBIDDEN,
+)
+
+def requires_auth(status_code):
+    return status_code in AUTH_ERRORS
 ```
 
 ## Development
@@ -112,7 +267,7 @@ uv sync
 Install pre-commit hooks:
 
 ```bash
-pre-commit install
+prek install
 ```
 
 ### Running Tests
