@@ -233,11 +233,11 @@ class TestMetaclassDefaults:
             """Test class with no attributes defined."""
 
         # Verify that the metaclass initialized the default attributes
-        assert MinimalStatus.status_code == 0  # type: ignore[comparison-overlap]
+        assert MinimalStatus.status_code == 0
         assert MinimalStatus.message == ""
         assert MinimalStatus.description == ""
 
         # Verify basic functionality still works
         assert int(MinimalStatus) == 0
         assert str(MinimalStatus) == ""
-        assert MinimalStatus == 0  # type: ignore[comparison-overlap]
+        assert MinimalStatus == 0
