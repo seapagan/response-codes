@@ -1,4 +1,4 @@
-"""Tests for the http_codes module."""
+"""Tests for the core HTTPStatus metaclass and utilities."""
 
 from __future__ import annotations
 
@@ -8,11 +8,6 @@ from response_codes import (
     HTTP_200_OK,
     HTTP_404_NOT_FOUND,
     HTTP_500_INTERNAL_SERVER_ERROR,
-    HTTP_CLIENT_ERRORS,
-    HTTP_INFORMATIONAL,
-    HTTP_REDIRECTION,
-    HTTP_SERVER_ERRORS,
-    HTTP_SUCCESS,
     HTTPStatus,
 )
 
@@ -115,35 +110,6 @@ class TestHTTPStatusBase:
         assert status_dict[HTTP_404_NOT_FOUND] == "not found"
 
 
-class TestHTTPStatusGroups:
-    """Test the HTTP status code groups."""
-
-    def test_informational_group(self) -> None:
-        """Test the informational status code group."""
-        assert all(100 <= code <= 102 for code in HTTP_INFORMATIONAL)
-        assert len(HTTP_INFORMATIONAL) == 3
-
-    def test_success_group(self) -> None:
-        """Test the success status code group."""
-        assert all(200 <= code <= 226 for code in HTTP_SUCCESS)
-        assert len(HTTP_SUCCESS) == 10
-
-    def test_redirection_group(self) -> None:
-        """Test the redirection status code group."""
-        assert all(300 <= code <= 308 for code in HTTP_REDIRECTION)
-        assert len(HTTP_REDIRECTION) == 8
-
-    def test_client_errors_group(self) -> None:
-        """Test the client errors status code group."""
-        assert all(400 <= code <= 429 for code in HTTP_CLIENT_ERRORS)
-        assert len(HTTP_CLIENT_ERRORS) == 7
-
-    def test_server_errors_group(self) -> None:
-        """Test the server errors status code group."""
-        assert all(500 <= code <= 511 for code in HTTP_SERVER_ERRORS)
-        assert len(HTTP_SERVER_ERRORS) == 6
-
-
 class TestHTTPStatusExceptions:
     """Test the HTTP status code exceptions."""
 
@@ -188,36 +154,6 @@ class TestImplicitConversions:
         assert str(HTTP_404_NOT_FOUND) == "Not Found"
         assert str(HTTP_200_OK) == "OK"
         assert str(HTTP_500_INTERNAL_SERVER_ERROR) == "Internal Server Error"
-
-
-class TestSpecificStatusCodes:
-    """Test specific HTTP status codes."""
-
-    def test_404_not_found(self) -> None:
-        """Test the 404 Not Found status code."""
-        assert HTTP_404_NOT_FOUND.status_code == 404
-        assert HTTP_404_NOT_FOUND.message == "Not Found"
-        assert HTTP_404_NOT_FOUND.description == (
-            "The requested resource could not be found on the server."
-        )
-
-    def test_200_ok(self) -> None:
-        """Test the 200 OK status code."""
-        assert HTTP_200_OK.status_code == 200
-        assert HTTP_200_OK.message == "OK"
-        assert HTTP_200_OK.description == (
-            "The request has succeeded and the response contains the "
-            "requested data."
-        )
-
-    def test_500_internal_server_error(self) -> None:
-        """Test the 500 Internal Server Error status code."""
-        assert HTTP_500_INTERNAL_SERVER_ERROR.status_code == 500
-        assert HTTP_500_INTERNAL_SERVER_ERROR.message == "Internal Server Error"
-        assert HTTP_500_INTERNAL_SERVER_ERROR.description == (
-            "The server encountered an unexpected condition that "
-            "prevented fulfilling the request."
-        )
 
 
 class TestMetaclassDefaults:
