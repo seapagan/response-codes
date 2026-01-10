@@ -75,6 +75,9 @@ select = ["ALL"]
     "PLR2004", # magic numbers are often used in test files
     "SLF001",  # sometimes we need to test private methods
 ]
+"src/**/__init__.py" = [
+    "RUF022", # __all__ order is intentional (grouped by status code range)
+]
 
 [tool.ruff.format]
 indent-style = "space"
