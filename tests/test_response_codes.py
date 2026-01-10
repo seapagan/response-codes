@@ -40,6 +40,13 @@ class TestHTTPStatusBase:
         assert HTTP_200_OK.message == "OK"
         assert HTTP_500_INTERNAL_SERVER_ERROR.message == "Internal Server Error"
 
+    def test_equality_with_other_types(self) -> None:
+        """Test equality comparison with non-int/non-str types."""
+        assert (HTTP_404_NOT_FOUND == [404]) is False
+        assert (HTTP_404_NOT_FOUND == {"code": 404}) is False
+        assert (HTTP_404_NOT_FOUND == (404,)) is False
+        assert (HTTP_200_OK == 200.0) is False
+
     def test_inequality(self) -> None:
         """Test inequality comparisons."""
         assert HTTP_404_NOT_FOUND.status_code != 200
@@ -48,36 +55,64 @@ class TestHTTPStatusBase:
 
     def test_less_than_comparison(self) -> None:
         """Test less than comparison with integer."""
-        assert HTTP_200_OK.status_code < 404
-        assert HTTP_404_NOT_FOUND.status_code >= 200
+        assert HTTP_200_OK < 404
+        assert not (HTTP_404_NOT_FOUND < 200)
 
     def test_less_than_or_equal_comparison(self) -> None:
         """Test less than or equal comparison with integer."""
-        assert HTTP_200_OK.status_code <= 404
-        assert HTTP_200_OK.status_code <= 200
-        assert HTTP_404_NOT_FOUND.status_code > 200
+        assert HTTP_200_OK <= 404
+        assert HTTP_200_OK <= 200
+        assert not (HTTP_404_NOT_FOUND <= 200)
 
     def test_greater_than_comparison(self) -> None:
         """Test greater than comparison with integer."""
-        assert HTTP_404_NOT_FOUND.status_code > 200
-        assert HTTP_200_OK.status_code <= 404
+        assert HTTP_404_NOT_FOUND > 200
+        assert not (HTTP_200_OK > 404)
 
     def test_greater_than_or_equal_comparison(self) -> None:
         """Test greater than or equal comparison with integer."""
-        assert HTTP_404_NOT_FOUND.status_code >= 200
-        assert HTTP_404_NOT_FOUND.status_code >= 404
-        assert HTTP_200_OK.status_code < 404
+        assert HTTP_404_NOT_FOUND >= 200
+        assert HTTP_404_NOT_FOUND >= 404
+        assert not (HTTP_200_OK >= 404)
 
     def test_comparison_with_non_int(self) -> None:
-        """Test comparison operations with non-integer types."""
+        """Test comparison operations with non-integer types raise TypeError."""
+        # These operations trigger the NotImplemented return, which Python
+        # converts to TypeError
         with pytest.raises(TypeError):
-            _ = HTTP_404_NOT_FOUND.status_code < "404"  # type: ignore
+            _ = HTTP_404_NOT_FOUND < "404"  # type: ignore
         with pytest.raises(TypeError):
-            _ = HTTP_404_NOT_FOUND.status_code <= "404"  # type: ignore
+            _ = HTTP_404_NOT_FOUND <= "404"  # type: ignore
         with pytest.raises(TypeError):
-            _ = HTTP_404_NOT_FOUND.status_code > "404"  # type: ignore
+            _ = HTTP_404_NOT_FOUND > "404"  # type: ignore
         with pytest.raises(TypeError):
-            _ = HTTP_404_NOT_FOUND.status_code >= "404"  # type: ignore
+            _ = HTTP_404_NOT_FOUND >= "404"  # type: ignore
+
+        # Test with various non-integer types
+        with pytest.raises(TypeError):
+            _ = HTTP_200_OK < [200]  # type: ignore
+        with pytest.raises(TypeError):
+            _ = HTTP_200_OK <= None  # type: ignore
+        with pytest.raises(TypeError):
+            _ = HTTP_200_OK > {"code": 200}  # type: ignore
+        with pytest.raises(TypeError):
+            _ = HTTP_200_OK >= 200.0  # type: ignore
+
+    def test_hash(self) -> None:
+        """Test that status codes can be hashed."""
+        assert hash(HTTP_404_NOT_FOUND) == hash(404)
+        assert hash(HTTP_200_OK) == hash(200)
+        assert hash(HTTP_500_INTERNAL_SERVER_ERROR) == hash(500)
+
+        # Test that status codes can be used in sets and as dict keys
+        status_set = {HTTP_404_NOT_FOUND, HTTP_200_OK, HTTP_404_NOT_FOUND}
+        assert len(status_set) == 2
+
+        status_dict = {
+            HTTP_404_NOT_FOUND: "not found",
+            HTTP_200_OK: "ok",
+        }
+        assert status_dict[HTTP_404_NOT_FOUND] == "not found"
 
 
 class TestHTTPStatusGroups:
@@ -142,6 +177,18 @@ class TestImplicitConversions:
         assert HTTP_200_OK == 200
         assert HTTP_200_OK == "OK"
 
+    def test_int_conversion(self) -> None:
+        """Test converting status code to int using int()."""
+        assert int(HTTP_404_NOT_FOUND) == 404
+        assert int(HTTP_200_OK) == 200
+        assert int(HTTP_500_INTERNAL_SERVER_ERROR) == 500
+
+    def test_str_conversion(self) -> None:
+        """Test converting status code to str using str()."""
+        assert str(HTTP_404_NOT_FOUND) == "Not Found"
+        assert str(HTTP_200_OK) == "OK"
+        assert str(HTTP_500_INTERNAL_SERVER_ERROR) == "Internal Server Error"
+
 
 class TestSpecificStatusCodes:
     """Test specific HTTP status codes."""
@@ -171,3 +218,26 @@ class TestSpecificStatusCodes:
             "The server encountered an unexpected condition that "
             "prevented fulfilling the request."
         )
+
+
+class TestMetaclassDefaults:
+    """Test metaclass default attribute initialization."""
+
+    def test_metaclass_initializes_missing_attributes(self) -> None:
+        """Test that metaclass sets default values for missing attributes."""
+        # Import at runtime to avoid mypy issues with the metaclass
+        from response_codes import HTTPStatusMeta  # noqa: PLC0415
+
+        # Create a minimal class without defining the standard attributes
+        class MinimalStatus(Exception, metaclass=HTTPStatusMeta):
+            """Test class with no attributes defined."""
+
+        # Verify that the metaclass initialized the default attributes
+        assert MinimalStatus.status_code == 0  # type: ignore[comparison-overlap]
+        assert MinimalStatus.message == ""
+        assert MinimalStatus.description == ""
+
+        # Verify basic functionality still works
+        assert int(MinimalStatus) == 0
+        assert str(MinimalStatus) == ""
+        assert MinimalStatus == 0  # type: ignore[comparison-overlap]

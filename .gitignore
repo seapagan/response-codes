@@ -215,3 +215,5 @@ pyrightconfig.json
 .cursorrules
 coverage.lcov
 .changelog_generator.toml
+CLAUDE.md
+AGENTS.md
