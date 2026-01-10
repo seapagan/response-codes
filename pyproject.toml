@@ -1,6 +1,6 @@
 [project]
 name = "http-response-codes"
-version = "0.4.0"
+version = "0.4.1"
 description = "A comprehensive Python library providing HTTP status code constants and exceptions"
 authors = [{ name = "Grant Ramsay", email = "seapagan@gmail.com" }]
 requires-python = ">=3.9"
