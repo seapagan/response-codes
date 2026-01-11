@@ -5,6 +5,14 @@ project since the first release, with the latest changes at the top.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0](https://github.com/seapagan/response-codes/releases/tag/0.5.0) (January 11, 2026)
+
+**New Features**
+
+- Feat: add HTTP_103_EARLY_HINTS (RFC 8297) ([#11](https://github.com/seapagan/response-codes/pull/11)) by [seapagan](https://github.com/seapagan)
+
+[`Full Changelog`](https://github.com/seapagan/response-codes/compare/0.4.1...0.5.0) | [`Diff`](https://github.com/seapagan/response-codes/compare/0.4.1...0.5.0.diff) | [`Patch`](https://github.com/seapagan/response-codes/compare/0.4.1...0.5.0.patch)
+
 ## [0.4.1](https://github.com/seapagan/response-codes/releases/tag/0.4.1) (January 10, 2026)
 
 Patch release to remove outdated development note from README.md. No functionality changed.
