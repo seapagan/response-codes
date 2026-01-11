@@ -6,6 +6,7 @@ from response_codes import (
     HTTP_100_CONTINUE,
     HTTP_101_SWITCHING_PROTOCOLS,
     HTTP_102_PROCESSING,
+    HTTP_103_EARLY_HINTS,
 )
 
 
@@ -32,3 +33,10 @@ class TestInformationalCodes:
         assert HTTP_102_PROCESSING.message == "Processing"
         assert HTTP_102_PROCESSING == 102
         assert HTTP_102_PROCESSING == "Processing"
+
+    def test_http_103_early_hints(self) -> None:
+        """Test the 103 Early Hints status code."""
+        assert HTTP_103_EARLY_HINTS.status_code == 103
+        assert HTTP_103_EARLY_HINTS.message == "Early Hints"
+        assert HTTP_103_EARLY_HINTS == 103
+        assert HTTP_103_EARLY_HINTS == "Early Hints"

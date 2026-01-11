@@ -16,8 +16,8 @@ class TestHTTPStatusGroups:
 
     def test_http_informational_group(self) -> None:
         """Test the informational status code group."""
-        assert all(100 <= code <= 102 for code in HTTP_INFORMATIONAL)
-        assert len(HTTP_INFORMATIONAL) == 3
+        assert all(100 <= code <= 103 for code in HTTP_INFORMATIONAL)
+        assert len(HTTP_INFORMATIONAL) == 4
 
     def test_http_success_group(self) -> None:
         """Test the success status code group."""

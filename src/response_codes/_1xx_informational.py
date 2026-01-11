@@ -52,8 +52,26 @@ class HTTP_102_PROCESSING(HTTPStatus):
     )
 
 
+class HTTP_103_EARLY_HINTS(HTTPStatus):
+    """103 Early Hints response status code.
+
+    Indicates to the client that the server is likely to send a final response
+    with the headers included in the informational response. This allows the
+    client to begin preloading resources while the server is still preparing
+    the final response.
+    """
+
+    status_code = 103
+    message = "Early Hints"
+    description = (
+        "The server is likely to send a final response with the included "
+        "headers, allowing the client to preload resources."
+    )
+
+
 __all__ = [
     "HTTP_100_CONTINUE",
     "HTTP_101_SWITCHING_PROTOCOLS",
     "HTTP_102_PROCESSING",
+    "HTTP_103_EARLY_HINTS",
 ]
