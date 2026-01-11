@@ -8,6 +8,7 @@ from ._1xx_informational import (
     HTTP_100_CONTINUE,
     HTTP_101_SWITCHING_PROTOCOLS,
     HTTP_102_PROCESSING,
+    HTTP_103_EARLY_HINTS,
 )
 from ._2xx_success import (
     HTTP_200_OK,
@@ -55,6 +56,7 @@ HTTP_INFORMATIONAL = create_status_group(
     HTTP_100_CONTINUE,
     HTTP_101_SWITCHING_PROTOCOLS,
     HTTP_102_PROCESSING,
+    HTTP_103_EARLY_HINTS,
 )
 
 HTTP_SUCCESS = create_status_group(

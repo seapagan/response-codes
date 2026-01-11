@@ -6,7 +6,7 @@ status code is represented by a class inheriting from HTTPStatus, containing
 the numeric code, message, and description.
 
 The module provides status codes in the following categories:
-    - 1xx: Informational responses (100-102)
+    - 1xx: Informational responses (100-103)
     - 2xx: Success responses (200-208, 226)
     - 3xx: Redirection responses (300-308)
     - 4xx: Client error responses (400-431, 451)
@@ -32,6 +32,7 @@ from ._1xx_informational import (
     HTTP_100_CONTINUE,
     HTTP_101_SWITCHING_PROTOCOLS,
     HTTP_102_PROCESSING,
+    HTTP_103_EARLY_HINTS,
 )
 
 # 2xx Success responses
@@ -129,6 +130,7 @@ __all__ = [
     "HTTP_100_CONTINUE",
     "HTTP_101_SWITCHING_PROTOCOLS",
     "HTTP_102_PROCESSING",
+    "HTTP_103_EARLY_HINTS",
     # 2xx Success
     "HTTP_200_OK",
     "HTTP_201_CREATED",

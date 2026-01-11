@@ -15,7 +15,7 @@ description.
 
 The module covers all standard HTTP status codes in the following categories:
 
-- 1xx: Informational responses (100-102)
+- 1xx: Informational responses (100-103)
 - 2xx: Success responses (200-208, 226)
 - 3xx: Redirection responses (300-308)
 - 4xx: Client error responses (400-431, 451)
