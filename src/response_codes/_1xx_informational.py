@@ -1,7 +1,7 @@
 """1xx Informational HTTP status codes.
 
 This module contains HTTP status code exceptions for informational responses
-(100-102).
+(100-103).
 """
 
 from ._core import HTTPStatus
