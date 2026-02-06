@@ -51,19 +51,23 @@ class HTTPStatusMeta(type):
         """Compare equality with another object.
 
         Returns True if other is an integer matching the status code or a
-        string matching the message.
+        string matching the message. Returns ``NotImplemented`` for unsupported
+        operand types so Python can apply standard fallback comparison logic.
 
         Args:
             other: Object to compare with
 
         Returns:
-            bool: True if objects are equal, False otherwise
+            bool: True if objects are equal, False otherwise.
+            NotImplemented: For unsupported operand types.
         """
+        if cls is other:
+            return True
         if isinstance(other, int):
             return cls.status_code == other
         if isinstance(other, str):
             return cls.message == other
-        return False
+        return NotImplemented
 
     def __lt__(cls, other: int) -> bool:
         """Compare if status code is less than another integer.
