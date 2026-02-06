@@ -42,6 +42,18 @@ class TestHTTPStatusBase:
         assert (HTTP_404_NOT_FOUND == (404,)) is False
         assert (HTTP_200_OK == 200.0) is False
 
+    def test_reflexive_class_equality(self) -> None:
+        """Test class equality is reflexive."""
+        not_found = HTTP_404_NOT_FOUND
+        ok = HTTP_200_OK
+        assert not_found == HTTP_404_NOT_FOUND
+        assert ok == HTTP_200_OK
+
+    def test_class_to_class_inequality(self) -> None:
+        """Test different status classes are not equal."""
+        assert HTTP_404_NOT_FOUND != HTTP_200_OK
+        assert HTTP_500_INTERNAL_SERVER_ERROR != HTTP_404_NOT_FOUND
+
     def test_inequality(self) -> None:
         """Test inequality comparisons."""
         assert HTTP_404_NOT_FOUND.status_code != 200

@@ -59,11 +59,13 @@ class HTTPStatusMeta(type):
         Returns:
             bool: True if objects are equal, False otherwise
         """
+        if cls is other:
+            return True
         if isinstance(other, int):
             return cls.status_code == other
         if isinstance(other, str):
             return cls.message == other
-        return False
+        return NotImplemented
 
     def __lt__(cls, other: int) -> bool:
         """Compare if status code is less than another integer.
