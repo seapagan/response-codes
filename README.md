@@ -88,6 +88,10 @@ if status_code in HTTP_CLIENT_ERRORS:
     print("This is a client error!")
 ```
 
+> [!NOTE]
+> Built-in status groups are exported as read-only mappings. You can look up
+> and iterate values normally, but mutation operations are not supported.
+
 ### Advanced Comparison Features
 
 The library uses a metaclass to enable powerful comparison operations
