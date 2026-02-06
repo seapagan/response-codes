@@ -4,6 +4,8 @@ This module contains predefined groups of related HTTP status codes organized
 by category (1xx, 2xx, 3xx, 4xx, 5xx).
 """
 
+from types import MappingProxyType
+
 from ._1xx_informational import (
     HTTP_100_CONTINUE,
     HTTP_101_SWITCHING_PROTOCOLS,
@@ -52,14 +54,14 @@ from ._5xx_server_errors import (
 from ._core import create_status_group
 
 # Define relevant error groups
-HTTP_INFORMATIONAL = create_status_group(
+_HTTP_INFORMATIONAL = create_status_group(
     HTTP_100_CONTINUE,
     HTTP_101_SWITCHING_PROTOCOLS,
     HTTP_102_PROCESSING,
     HTTP_103_EARLY_HINTS,
 )
 
-HTTP_SUCCESS = create_status_group(
+_HTTP_SUCCESS = create_status_group(
     HTTP_200_OK,
     HTTP_201_CREATED,
     HTTP_202_ACCEPTED,
@@ -72,7 +74,7 @@ HTTP_SUCCESS = create_status_group(
     HTTP_226_IM_USED,
 )
 
-HTTP_REDIRECTION = create_status_group(
+_HTTP_REDIRECTION = create_status_group(
     HTTP_300_MULTIPLE_CHOICES,
     HTTP_301_MOVED_PERMANENTLY,
     HTTP_302_FOUND,
@@ -83,7 +85,7 @@ HTTP_REDIRECTION = create_status_group(
     HTTP_308_PERMANENT_REDIRECT,
 )
 
-HTTP_CLIENT_ERRORS = create_status_group(
+_HTTP_CLIENT_ERRORS = create_status_group(
     HTTP_400_BAD_REQUEST,
     HTTP_401_UNAUTHORIZED,
     HTTP_403_FORBIDDEN,
@@ -93,7 +95,7 @@ HTTP_CLIENT_ERRORS = create_status_group(
     HTTP_429_TOO_MANY_REQUESTS,
 )
 
-HTTP_SERVER_ERRORS = create_status_group(
+_HTTP_SERVER_ERRORS = create_status_group(
     HTTP_500_INTERNAL_SERVER_ERROR,
     HTTP_501_NOT_IMPLEMENTED,
     HTTP_502_BAD_GATEWAY,
@@ -101,6 +103,12 @@ HTTP_SERVER_ERRORS = create_status_group(
     HTTP_504_GATEWAY_TIMEOUT,
     HTTP_511_NETWORK_AUTHENTICATION_REQUIRED,
 )
+
+HTTP_INFORMATIONAL = MappingProxyType(_HTTP_INFORMATIONAL)
+HTTP_SUCCESS = MappingProxyType(_HTTP_SUCCESS)
+HTTP_REDIRECTION = MappingProxyType(_HTTP_REDIRECTION)
+HTTP_CLIENT_ERRORS = MappingProxyType(_HTTP_CLIENT_ERRORS)
+HTTP_SERVER_ERRORS = MappingProxyType(_HTTP_SERVER_ERRORS)
 
 __all__ = [
     "HTTP_CLIENT_ERRORS",

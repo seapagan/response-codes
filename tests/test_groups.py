@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
+import pytest
+
 from response_codes import (
     HTTP_CLIENT_ERRORS,
     HTTP_INFORMATIONAL,
@@ -38,3 +42,10 @@ class TestHTTPStatusGroups:
         """Test the server errors status code group."""
         assert all(500 <= code <= 511 for code in HTTP_SERVER_ERRORS)
         assert len(HTTP_SERVER_ERRORS) == 6
+
+    def test_groups_are_read_only(self) -> None:
+        """Test that exported groups cannot be mutated."""
+        with pytest.raises(TypeError):
+            HTTP_SUCCESS[299] = HTTP_SUCCESS[200]  # type: ignore[index]
+        with pytest.raises(TypeError):
+            del cast("Any", HTTP_CLIENT_ERRORS)[400]
