@@ -178,4 +178,8 @@ def create_status_group(
     }
 
 
-__all__ = ["HTTPStatus", "HTTPStatusMeta", "create_status_group"]
+__all__ = [
+    "HTTPStatus",
+    "HTTPStatusMeta",
+    "create_status_group",
+]
