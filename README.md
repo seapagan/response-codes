@@ -105,7 +105,7 @@ Practical example:
 ```python
 from response_codes import HTTP_202_ACCEPTED, HTTP_429_TOO_MANY_REQUESTS, is_success, is_client_error
 is_success(202)  # True
-is_success(HTTP_202_ACCEPTED)  #True
+is_success(HTTP_202_ACCEPTED)  # True
 is_success(HTTP_202_ACCEPTED())  # True
 is_success(302)  # False
 is_client_error(HTTP_429_TOO_MANY_REQUESTS)  # True
