@@ -44,6 +44,7 @@ uv add http-response-codes
 - Hashable - use as dictionary keys or in sets
 - Type hints included
 - Predefined groups of related status codes
+- Category predicate helpers (`is_success`, `is_client_error`, `is_server_error`, etc.)
 - Detailed descriptions for each status code
 - Zero dependencies
 
@@ -91,6 +92,27 @@ if status_code in HTTP_CLIENT_ERRORS:
 > [!NOTE]
 > Built-in status groups are exported as read-only mappings. You can look up
 > and iterate values normally, but mutation operations are not supported.
+
+### Status Category Helpers
+
+Category predicate helpers: `is_informational`, `is_success`, `is_redirection`,
+`is_client_error`, `is_server_error`.
+They accept an `int`, a status class, or a status instance; unsupported types
+raise `TypeError`.
+
+Practical example:
+
+```python
+from response_codes import HTTP_202_ACCEPTED, HTTP_429_TOO_MANY_REQUESTS, is_success, is_client_error
+is_success(202)  # True
+is_success(HTTP_202_ACCEPTED)  # True
+is_success(HTTP_202_ACCEPTED())  # True
+is_success(302)  # False
+is_client_error(HTTP_429_TOO_MANY_REQUESTS)  # True
+is_client_error(404)  # True
+is_client_error(3.14)  # TypeError: value must be int or HTTPStatus
+is_client_error(None)  # TypeError: value must be int or HTTPStatus
+```
 
 ### Advanced Comparison Features
 

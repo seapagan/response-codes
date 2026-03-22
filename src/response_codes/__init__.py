@@ -121,11 +121,25 @@ from ._groups import (
     HTTP_SUCCESS,
 )
 
+# HTTP status categories
+from ._is_category import (
+    is_client_error,
+    is_informational,
+    is_redirection,
+    is_server_error,
+    is_success,
+)
+
 __all__ = [
     # Core classes and utilities
     "HTTPStatus",
     "HTTPStatusMeta",
     "create_status_group",
+    "is_informational",
+    "is_success",
+    "is_redirection",
+    "is_client_error",
+    "is_server_error",
     # 1xx Informational
     "HTTP_100_CONTINUE",
     "HTTP_101_SWITCHING_PROTOCOLS",
