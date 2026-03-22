@@ -2,7 +2,6 @@
 
 - add docs website
 - add more proper examples
-- add http status categories - ie 'is_informational', is successfull' etc.
 - suggest retry logic (`should_retry()`) returning a bool if code is retryable
   (ie `408`, `429`, `500`, `503`, `504`)
 - API friendly output - ie returning:

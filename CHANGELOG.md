@@ -5,12 +5,25 @@ project since the first release, with the latest changes at the top.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0](https://github.com/seapagan/response-codes/releases/tag/0.6.0) (March 22, 2026)
 
-## [0.5.1](https://github.com/seapagan/response-codes/releases/tag/0.5.1) (February 06, 2026)
+**Closed Issues**
+
+- LICENSE ([#18](https://github.com/seapagan/response-codes/issues/18)) by [seapagan](https://github.com/seapagan)
+- Сategory predicate helpers ([#17](https://github.com/seapagan/response-codes/issues/17)) by [seapagan](https://github.com/seapagan)
 
 **New Features**
 
+- Feat: add HTTP status category predicate helpers ([#16](https://github.com/seapagan/response-codes/pull/16)) by [imtoopunkforyou](https://github.com/imtoopunkforyou)
 - Make exported status groups read-only ([#15](https://github.com/seapagan/response-codes/pull/15)) by [seapagan](https://github.com/seapagan)
+
+**Documentation**
+
+- Add MIT license file ([#19](https://github.com/seapagan/response-codes/pull/19)) by [seapagan](https://github.com/seapagan)
+
+[`Full Changelog`](https://github.com/seapagan/response-codes/compare/0.5.1...0.6.0) | [`Diff`](https://github.com/seapagan/response-codes/compare/0.5.1...0.6.0.diff) | [`Patch`](https://github.com/seapagan/response-codes/compare/0.5.1...0.6.0.patch)
+
+## [0.5.1](https://github.com/seapagan/response-codes/releases/tag/0.5.1) (February 06, 2026)
 
 **Bug Fixes**
 
@@ -37,7 +50,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [0.4.1](https://github.com/seapagan/response-codes/releases/tag/0.4.1) (January 10, 2026)
 
 Patch release to remove outdated development note from README.md. No functionality changed.
-
 
 [`Full Changelog`](https://github.com/seapagan/response-codes/compare/0.4.0...0.4.1) | [`Diff`](https://github.com/seapagan/response-codes/compare/0.4.0...0.4.1.diff) | [`Patch`](https://github.com/seapagan/response-codes/compare/0.4.0...0.4.1.patch)
 
